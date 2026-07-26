@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RealEstate Home</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{background:#f5f7fb}
+.hero{background:url('https://images.pexels.com/photos/7587880/pexels-photo-7587880.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;height:600px}
+.overlay{background:rgba(0,0,0,.45);height:100%;display:flex;align-items:center}
+.search-card{margin-top:20px}
+.property-card{border:none;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+.cta{background:#0d1b3d;color:#fff;padding:50px 0}
+
+.stats-bar{background:#fff;padding:36px 0;border-bottom:1px solid #eef0f5}
+.stats-bar h3{color:#0d6efd;font-weight:700;margin-bottom:2px}
+.stats-bar p{color:#6c757d;margin:0;font-size:.92rem}
+
+.section-title{font-weight:700;margin-bottom:8px}
+.section-sub{color:#6c757d;max-width:560px}
+
+.feature-card{background:#fff;border-radius:12px;padding:28px 24px;height:100%;box-shadow:0 5px 20px rgba(0,0,0,.05)}
+.feature-icon{width:52px;height:52px;border-radius:10px;background:#e7f0ff;color:#0d6efd;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px}
+
+.step-card{text-align:center;padding:20px}
+.step-num{width:44px;height:44px;border-radius:50%;background:#0d6efd;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 14px}
+
+.agent-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,.07)}
+.agent-photo{height:100%;min-height:320px;background-size:cover;background-position:center}
+
+.testimonial-card{background:#fff;border-radius:12px;padding:28px 24px;height:100%;box-shadow:0 5px 20px rgba(0,0,0,.05)}
+.testimonial-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.stars{color:#ffb400;font-size:.9rem;margin-bottom:10px}
+
+footer.site-footer{background:#0a1329;color:#c7ceda;padding:56px 0 24px}
+footer.site-footer h5{color:#fff;font-weight:700;margin-bottom:16px}
+footer.site-footer a{color:#c7ceda;text-decoration:none}
+footer.site-footer a:hover{color:#fff}
+footer.site-footer .fbottom{border-top:1px solid rgba(255,255,255,.08);margin-top:32px;padding-top:20px;font-size:.85rem;color:#8590a6}
+
+.editme{border:1px dashed #0d6efd;background:#e7f0ff;border-radius:6px;padding:1px 6px;font-size:.85em;color:#0d6efd}
+
+.lang-switch{display:flex;gap:4px;border:1px solid #dee2e6;border-radius:8px;padding:3px}
+.lang-btn{border:none;background:transparent;padding:4px 9px;font-size:.78rem;font-weight:600;border-radius:6px;color:#6c757d;cursor:pointer}
+.lang-btn.active{background:#0d6efd;color:#fff}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="#">RealEstate</a>
+    <div class="d-flex align-items-center order-lg-3 gap-2">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hy">ՀԱՅ</button>
+        <button class="lang-btn" data-lang="ru">РУС</button>
+      </div>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    </div>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link active" href="#" data-i18n="nav.home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#for-sale" data-i18n="nav.forsale">For Sale</a></li>
+        <li class="nav-item"><a class="nav-link" href="#for-rent" data-i18n="nav.forrent">For Rent</a></li>
+        <li class="nav-item"><a class="nav-link" href="#why-us" data-i18n="nav.whyus">Why Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#agent" data-i18n="nav.about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials" data-i18n="nav.reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <a class="btn btn-outline-primary" href="#contact">+374 55 123456</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="overlay">
+    <div class="container text-white">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold" data-i18n="hero.title">Find Your Perfect Property</h1>
+          <p data-i18n="hero.subtitle">Discover the best places to live or invest.</p>
+
+          <div class="btn-group mb-4">
+            <button class="btn btn-primary" data-i18n="hero.rent">For Rent</button>
+            <button class="btn btn-light" data-i18n="hero.sale">For Sale</button>
+            <button class="btn btn-light" data-i18n="hero.all">All</button>
+          </div>
+
+          <div class="card search-card">
+            <div class="card-body">
+              <div class="row g-2">
+                <div class="col-md-3"><input class="form-control" placeholder="Keyword" data-i18n-placeholder="hero.keyword"></div>
+                <div class="col-md-3"><select class="form-select"><option data-i18n="hero.proptype">Property Type</option></select></div>
+                <div class="col-md-3"><select class="form-select"><option data-i18n="hero.location">Location</option></select></div>
+                <div class="col-md-3"><button class="btn btn-primary w-100" data-i18n="hero.search">Search</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-bar">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3"><h3>500+</h3><p data-i18n="stats.sold">Properties Sold</p></div>
+      <div class="col-6 col-md-3"><h3>1,200+</h3><p data-i18n="stats.clients">Happy Clients</p></div>
+      <div class="col-6 col-md-3"><h3>10+</h3><p data-i18n="stats.years">Years in Yerevan</p></div>
+      <div class="col-6 col-md-3"><h3>4.9 / 5</h3><p data-i18n="stats.rating">Average Rating</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5" id="for-sale">
+<div class="row mb-3">
+  <div class="col-md-8">
+    <h2 class="section-title" data-i18n="forsale.title">Homes For Sale</h2>
+    <p class="section-sub" data-i18n="forsale.sub">Properties available to buy right now. Prices are asking price — always negotiable on a call.</p>
+  </div>
+</div>
+<div class="row g-4 mt-2">
+  <div class="col-md-4"><div class="card property-card"><img src="https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img-top"><div class="card-body"><h5 data-i18n="forsale.item1">Family House with Garden</h5><p>$220,000</p></div></div></div>
+  <div class="col-md-4"><div class="card property-card"><img src="https://images.pexels.com/photos/8134821/pexels-photo-8134821.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img-top"><div class="card-body"><h5 data-i18n="forsale.item2">Luxury House</h5><p>$250,000</p></div></div></div>
+  <div class="col-md-4"><div class="card property-card"><img src="https://images.pexels.com/photos/7546776/pexels-photo-7546776.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img-top"><div class="card-body"><h5 data-i18n="forsale.item3">Spacious Family Home</h5><p>$195,000</p></div></div></div>
+</div>
+<div class="text-center mt-4">
+  <a href="#" class="btn btn-outline-primary px-4 editme" data-i18n="forsale.viewall">View All Homes For Sale</a>
+</div>
+</section>
+
+<section class="container py-5" id="for-rent">
+<div class="row mb-3">
+  <div class="col-md-8">
+    <h2 class="section-title" data-i18n="forrent.title">For Rent</h2>
+    <p class="section-sub" data-i18n="forrent.sub">Apartments and hostel rooms available daily or monthly. Toggle below to see nightly or monthly rates.</p>
+  </div>
+</div>
+<div class="btn-group mb-4" role="group" aria-label="Rent pricing toggle">
+  <button type="button" class="btn btn-primary rent-toggle active" data-mode="daily" data-i18n="forrent.daily">Daily</button>
+  <button type="button" class="btn btn-outline-primary rent-toggle" data-mode="monthly" data-i18n="forrent.monthly">Monthly</button>
+</div>
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card property-card">
+      <img src="https://images.pexels.com/photos/7060814/pexels-photo-7060814.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img-top">
+      <div class="card-body">
+        <h5 data-i18n="forrent.item1">City Studio</h5>
+        <p class="price-daily mb-0">$35 <span class="text-muted small" data-i18n="forrent.night">/ night</span></p>
+        <p class="price-monthly mb-0 d-none">$650 <span class="text-muted small" data-i18n="forrent.month">/ month</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card property-card">
+      <img src="https://images.pexels.com/photos/6933852/pexels-photo-6933852.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img-top">
+      <div class="card-body">
+        <h5 data-i18n="forrent.item2">Downtown Apartment</h5>
+        <p class="price-daily mb-0">$50 <span class="text-muted small" data-i18n="forrent.night">/ night</span></p>
+        <p class="price-monthly mb-0 d-none">$950 <span class="text-muted small" data-i18n="forrent.month">/ month</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card property-card">
+      <img src="https://images.pexels.com/photos/6585628/pexels-photo-6585628.jpeg?auto=compress&cs=tinysrgb&w=800" class="card-img-top">
+      <div class="card-body">
+        <h5 data-i18n="forrent.item3">Cozy Hostel Room</h5>
+        <p class="price-daily mb-0">$18 <span class="text-muted small" data-i18n="forrent.night">/ night</span></p>
+        <p class="price-monthly mb-0 d-none">$380 <span class="text-muted small" data-i18n="forrent.month">/ month</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center mt-4">
+  <a href="#" class="btn btn-outline-primary px-4 editme" data-i18n="forrent.viewall">View All Rentals</a>
+</div>
+</section>
+
+<section class="container py-5" id="why-us">
+  <div class="text-center mb-5">
+    <h2 class="section-title" data-i18n="whyus.title">Why Work With Us</h2>
+    <p class="section-sub mx-auto" data-i18n="whyus.sub">A few reasons clients keep coming back — and referring their friends.</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-3 col-6">
+      <div class="feature-card">
+        <div class="feature-icon">✓</div>
+        <h6 class="fw-bold" data-i18n="whyus.f1t">Verified Listings</h6>
+        <p class="text-muted small mb-0" data-i18n="whyus.f1d">Every property is checked in person before it goes on the site.</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="feature-card">
+        <div class="feature-icon">₪</div>
+        <h6 class="fw-bold" data-i18n="whyus.f2t">Fair Pricing</h6>
+        <p class="text-muted small mb-0" data-i18n="whyus.f2d">Local market knowledge means no surprises on price.</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="feature-card">
+        <div class="feature-icon">⏱</div>
+        <h6 class="fw-bold" data-i18n="whyus.f3t">Fast Response</h6>
+        <p class="text-muted small mb-0" data-i18n="whyus.f3d">Same-day replies and flexible viewing times.</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h6 class="fw-bold" data-i18n="whyus.f4t">Full Support</h6>
+        <p class="text-muted small mb-0" data-i18n="whyus.f4d">From first visit to signed contract, every step handled.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" style="background:#fff">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title" data-i18n="how.title">How It Works</h2>
+      <p class="section-sub mx-auto" data-i18n="how.sub">Three simple steps from browsing to moving in.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h6 class="fw-bold" data-i18n="how.s1t">Search &amp; Shortlist</h6>
+          <p class="text-muted small" data-i18n="how.s1d">Filter by budget, location, and property type to build your shortlist.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h6 class="fw-bold" data-i18n="how.s2t">Visit &amp; Compare</h6>
+          <p class="text-muted small" data-i18n="how.s2d">We schedule viewings around your calendar and walk through each option with you.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h6 class="fw-bold" data-i18n="how.s3t">Close the Deal</h6>
+          <p class="text-muted small" data-i18n="how.s3d">Paperwork, negotiation, and handover — all handled for you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5" id="agent">
+  <div class="agent-card">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <div class="agent-photo" style="background-image:url('https://images.pexels.com/photos/3778602/pexels-photo-3778602.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="col-md-8">
+        <div class="p-4 p-md-5">
+          <p class="text-primary fw-bold mb-1" data-i18n="agent.label">Meet Your Agent</p>
+          <h3 class="fw-bold editme">Your Name</h3>
+          <p class="text-muted" data-i18n="agent.bio">Helping people find the right place in Yerevan for over 10 years. Whether you're renting your first apartment or investing in your next property, I'll walk you through every step — no pressure, just honest advice.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <span class="badge bg-light text-dark border">📞 <span class="editme">+374 XX XXXXXX</span></span>
+            <span class="badge bg-light text-dark border">✉️ <span class="editme">your@email.com</span></span>
+            <span class="badge bg-light text-dark border">📍 <span data-i18n="agent.city">Yerevan, Armenia</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" style="background:#fff" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title" data-i18n="testi.title">What Clients Say</h2>
+      <p class="section-sub mx-auto editme">[Replace with real client reviews once you have them]</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="text-muted" data-i18n="testi.q1">"Found us the perfect apartment in under two weeks. Every step was clear and stress-free."</p>
+          <div class="d-flex align-items-center gap-2 mt-3">
+            <img class="testimonial-avatar" src="https://images.pexels.com/photos/3791554/pexels-photo-3791554.jpeg?auto=compress&cs=tinysrgb&w=200">
+            <div>
+              <div class="fw-bold small editme">Client Name</div>
+              <div class="text-muted small" data-i18n="testi.r1">Tenant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="text-muted" data-i18n="testi.q2">"Sold our house above asking price. Professional from the first call to closing."</p>
+          <div class="d-flex align-items-center gap-2 mt-3">
+            <img class="testimonial-avatar" src="https://images.pexels.com/photos/12437056/pexels-photo-12437056.jpeg?auto=compress&cs=tinysrgb&w=200">
+            <div>
+              <div class="fw-bold small editme">Client Name</div>
+              <div class="text-muted small" data-i18n="testi.r2">Seller</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="text-muted" data-i18n="testi.q3">"As a first-time buyer I had a lot of questions. Every one of them got answered patiently."</p>
+          <div class="d-flex align-items-center gap-2 mt-3">
+            <img class="testimonial-avatar" src="https://images.pexels.com/photos/18658795/pexels-photo-18658795.jpeg?auto=compress&cs=tinysrgb&w=200">
+            <div>
+              <div class="fw-bold small editme">Client Name</div>
+              <div class="text-muted small" data-i18n="testi.r3">Buyer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+<div class="container d-flex justify-content-between align-items-center flex-wrap gap-3">
+<div>
+<h3 data-i18n="cta.title">Need Help Finding a Property?</h3>
+<p data-i18n="cta.sub">I'm here to help you find the perfect place.</p>
+</div>
+<button class="btn btn-primary" data-i18n="cta.button">Contact Me</button>
+</div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h5>RealEstate</h5>
+        <p class="small" data-i18n="footer.tagline">Helping people find the right place in Yerevan — rentals, sales, and everything in between.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="editme">Facebook</a>
+          <a href="#" class="editme">Instagram</a>
+          <a href="#" class="editme">LinkedIn</a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h5 data-i18n="footer.quicklinks">Quick Links</h5>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="#for-sale" data-i18n="nav.forsale">For Sale</a></li>
+          <li class="mb-2"><a href="#for-rent" data-i18n="nav.forrent">For Rent</a></li>
+          <li class="mb-2"><a href="#why-us" data-i18n="nav.whyus">Why Us</a></li>
+          <li class="mb-2"><a href="#agent" data-i18n="nav.about">About</a></li>
+          <li class="mb-2"><a href="#testimonials" data-i18n="nav.reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5 data-i18n="nav.contact">Contact</h5>
+        <ul class="list-unstyled small">
+          <li class="mb-2 editme">your@email.com</li>
+          <li class="mb-2 editme">+374 XX XXXXXX</li>
+          <li class="mb-2" data-i18n="agent.city">Yerevan, Armenia</li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5 data-i18n="footer.hours">Office Hours</h5>
+        <ul class="list-unstyled small">
+          <li class="mb-2" data-i18n="footer.h1">Mon – Fri: 9:00 – 18:00</li>
+          <li class="mb-2" data-i18n="footer.h2">Saturday: 10:00 – 15:00</li>
+          <li class="mb-2" data-i18n="footer.h3">Sunday: Closed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom d-flex justify-content-between flex-wrap gap-2">
+      <span>© <span id="year"></span> RealEstate. <span data-i18n="footer.rights">All rights reserved.</span></span>
+      <span data-i18n="footer.builtwith">Built with HTML, CSS &amp; Bootstrap</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+console.log('RealEstate Homepage Loaded');
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.querySelectorAll('.rent-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.rent-toggle').forEach(function(b){
+      b.classList.remove('btn-primary','active');
+      b.classList.add('btn-outline-primary');
+    });
+    btn.classList.add('btn-primary','active');
+    btn.classList.remove('btn-outline-primary');
+    var mode = btn.dataset.mode;
+    document.querySelectorAll('.price-daily').forEach(function(el){ el.classList.toggle('d-none', mode !== 'daily'); });
+    document.querySelectorAll('.price-monthly').forEach(function(el){ el.classList.toggle('d-none', mode !== 'monthly'); });
+  });
+});
+
+/* ---------- i18n ---------- */
+var translations = {
+  en: {
+    "nav.home":"Home","nav.forsale":"For Sale","nav.forrent":"For Rent","nav.whyus":"Why Us","nav.about":"About","nav.reviews":"Reviews","nav.contact":"Contact",
+    "hero.title":"Find Your Perfect Property","hero.subtitle":"Discover the best places to live or invest.",
+    "hero.rent":"For Rent","hero.sale":"For Sale","hero.all":"All",
+    "hero.keyword":"Keyword","hero.proptype":"Property Type","hero.location":"Location","hero.search":"Search",
+    "stats.sold":"Properties Sold","stats.clients":"Happy Clients","stats.years":"Years in Yerevan","stats.rating":"Average Rating",
+    "forsale.title":"Homes For Sale","forsale.sub":"Properties available to buy right now. Prices are asking price — always negotiable on a call.",
+    "forsale.item1":"Family House with Garden","forsale.item2":"Luxury House","forsale.item3":"Spacious Family Home","forsale.viewall":"View All Homes For Sale",
+    "forrent.title":"For Rent","forrent.sub":"Apartments and hostel rooms available daily or monthly. Toggle below to see nightly or monthly rates.",
+    "forrent.daily":"Daily","forrent.monthly":"Monthly",
+    "forrent.item1":"City Studio","forrent.item2":"Downtown Apartment","forrent.item3":"Cozy Hostel Room",
+    "forrent.night":"/ night","forrent.month":"/ month","forrent.viewall":"View All Rentals",
+    "whyus.title":"Why Work With Us","whyus.sub":"A few reasons clients keep coming back — and referring their friends.",
+    "whyus.f1t":"Verified Listings","whyus.f1d":"Every property is checked in person before it goes on the site.",
+    "whyus.f2t":"Fair Pricing","whyus.f2d":"Local market knowledge means no surprises on price.",
+    "whyus.f3t":"Fast Response","whyus.f3d":"Same-day replies and flexible viewing times.",
+    "whyus.f4t":"Full Support","whyus.f4d":"From first visit to signed contract, every step handled.",
+    "how.title":"How It Works","how.sub":"Three simple steps from browsing to moving in.",
+    "how.s1t":"Search & Shortlist","how.s1d":"Filter by budget, location, and property type to build your shortlist.",
+    "how.s2t":"Visit & Compare","how.s2d":"We schedule viewings around your calendar and walk through each option with you.",
+    "how.s3t":"Close the Deal","how.s3d":"Paperwork, negotiation, and handover — all handled for you.",
+    "agent.label":"Meet Your Agent","agent.bio":"Helping people find the right place in Yerevan for over 10 years. Whether you're renting your first apartment or investing in your next property, I'll walk you through every step — no pressure, just honest advice.","agent.city":"Yerevan, Armenia",
+    "testi.title":"What Clients Say",
+    "testi.q1":"\"Found us the perfect apartment in under two weeks. Every step was clear and stress-free.\"","testi.r1":"Tenant",
+    "testi.q2":"\"Sold our house above asking price. Professional from the first call to closing.\"","testi.r2":"Seller",
+    "testi.q3":"\"As a first-time buyer I had a lot of questions. Every one of them got answered patiently.\"","testi.r3":"Buyer",
+    "cta.title":"Need Help Finding a Property?","cta.sub":"I'm here to help you find the perfect place.","cta.button":"Contact Me",
+    "footer.tagline":"Helping people find the right place in Yerevan — rentals, sales, and everything in between.",
+    "footer.quicklinks":"Quick Links","footer.hours":"Office Hours",
+    "footer.h1":"Mon – Fri: 9:00 – 18:00","footer.h2":"Saturday: 10:00 – 15:00","footer.h3":"Sunday: Closed",
+    "footer.rights":"All rights reserved.","footer.builtwith":"Built with HTML, CSS & Bootstrap"
+  },
+  hy: {
+    "nav.home":"Գլխավոր","nav.forsale":"Վաճառքի համար","nav.forrent":"Վարձակալության համար","nav.whyus":"Ինչու՞ մենք","nav.about":"Մեր մասին","nav.reviews":"Կարծիքներ","nav.contact":"Կապ",
+    "hero.title":"Գտեք Ձեր Կատարյալ Անշարժ Գույքը","hero.subtitle":"Բացահայտեք լավագույն վայրերը ապրելու կամ ներդրումներ կատարելու համար։",
+    "hero.rent":"Վարձակալություն","hero.sale":"Վաճառք","hero.all":"Բոլորը",
+    "hero.keyword":"Բանալի բառ","hero.proptype":"Գույքի տեսակ","hero.location":"Գտնվելու վայրը","hero.search":"Փնտրել",
+    "stats.sold":"Վաճառված գույքեր","stats.clients":"Գոհ հաճախորդներ","stats.years":"Տարիներ Երևանում","stats.rating":"Միջին գնահատական",
+    "forsale.title":"Վաճառվող տներ","forsale.sub":"Այս պահին վաճառքի հասանելի գույքեր։ Գները հայտարարված են, միշտ քննարկելի են զանգի ընթացքում։",
+    "forsale.item1":"Այգով ընտանեկան տուն","forsale.item2":"Շքեղ տուն","forsale.item3":"Ընդարձակ ընտանեկան տուն","forsale.viewall":"Տեսնել բոլոր վաճառվող տները",
+    "forrent.title":"Վարձակալվող","forrent.sub":"Բնակարաններ և հոսթելի սենյակներ՝ հասանելի օրական կամ ամսական։ Փոխարկեք ներքևում՝ գները տեսնելու համար։",
+    "forrent.daily":"Օրական","forrent.monthly":"Ամսական",
+    "forrent.item1":"Քաղաքային ստուդիա","forrent.item2":"Կենտրոնի բնակարան","forrent.item3":"Հարմարավետ հոսթելի սենյակ",
+    "forrent.night":"/ գիշեր","forrent.month":"/ ամիս","forrent.viewall":"Տեսնել բոլոր վարձակալվողները",
+    "whyus.title":"Ինչու՞ աշխատել մեզ հետ","whyus.sub":"Մի քանի պատճառ, թե ինչու հաճախորդները վերադառնում են և առաջարկում իրենց ընկերներին։",
+    "whyus.f1t":"Ստուգված հայտարարություններ","whyus.f1d":"Յուրաքանչյուր գույք անձամբ ստուգվում է մինչև կայքում հրապարակվելը։",
+    "whyus.f2t":"Արդար գնագոյացում","whyus.f2d":"Տեղական շուկայի իմացությունը նշանակում է՝ գնի հարցում անակնկալներ չկան։",
+    "whyus.f3t":"Արագ պատասխան","whyus.f3d":"Պատասխան նույն օրը և ճկուն դիտման ժամեր։",
+    "whyus.f4t":"Լիարժեք աջակցություն","whyus.f4d":"Առաջին այցելությունից մինչև պայմանագրի ստորագրում՝ ամեն քայլն ուղեկցվում է։",
+    "how.title":"Ինչպես է աշխատում","how.sub":"Երեք պարզ քայլ՝ դիտումից մինչև տեղափոխություն։",
+    "how.s1t":"Փնտրել և ընտրել","how.s1d":"Զտեք ըստ բյուջեի, գտնվելու վայրի և գույքի տեսակի՝ ձեր ցանկը կազմելու համար։",
+    "how.s2t":"Այցելել և համեմատել","how.s2d":"Մենք կազմակերպում ենք դիտումներ ձեր ժամանակացույցին համապատասխան և ուղեկցում ենք յուրաքանչյուր տարբերակի ընթացքում։",
+    "how.s3t":"Ավարտել գործարքը","how.s3d":"Փաստաթղթեր, բանակցություններ և հանձնում՝ ամեն ինչ մենք ենք կազմակերպում։",
+    "agent.label":"Ծանոթացեք Ձեր Գործակալի Հետ","agent.bio":"Ավելի քան 10 տարի օգնում եմ մարդկանց գտնել իրենց տեղը Երևանում։ Անկախ նրանից՝ վարձակալում եք Ձեր առաջին բնակարանը, թե ներդրում կատարում հաջորդ գույքի մեջ, ես կուղեկցեմ Ձեզ ամեն քայլում՝ առանց ճնշման, միայն անկեղծ խորհրդատվություն։","agent.city":"Երևան, Հայաստան",
+    "testi.title":"Ինչ են ասում հաճախորդները",
+    "testi.q1":"«Երկու շաբաթից պակաս ժամանակում գտան մեզ համար կատարյալ բնակարան։ Ամեն քայլ հասկանալի էր և առանց սթրեսի»։","testi.r1":"Վարձակալ",
+    "testi.q2":"«Վաճառեցին մեր տունը հայտարարված գնից բարձր։ Պրոֆեսիոնալ մոտեցում՝ առաջին զանգից մինչև գործարքի ավարտ»։","testi.r2":"Վաճառող",
+    "testi.q3":"«Որպես առաջին անգամ գնորդ՝ ես շատ հարցեր ունեի։ Բոլորին համբերատար պատասխանեցին»։","testi.r3":"Գնորդ",
+    "cta.title":"Օգնության կարիք ունե՞ք գույք գտնելու համար","cta.sub":"Ես այստեղ եմ՝ օգնելու Ձեզ գտնել կատարյալ վայրը։","cta.button":"Կապվել ինձ հետ",
+    "footer.tagline":"Օգնում ենք մարդկանց գտնել իրենց տեղը Երևանում՝ վարձակալություն, վաճառք և ամեն ինչ, ինչ մեջտեղում է։",
+    "footer.quicklinks":"Օգտակար հղումներ","footer.hours":"Աշխատանքային ժամեր",
+    "footer.h1":"Երկ – Ուրբ՝ 9:00 – 18:00","footer.h2":"Շաբաթ՝ 10:00 – 15:00","footer.h3":"Կիրակի՝ Փակ է",
+    "footer.rights":"Բոլոր իրավունքները պաշտպանված են։","footer.builtwith":"Ստեղծված է HTML, CSS և Bootstrap-ով"
+  },
+  ru: {
+    "nav.home":"Главная","nav.forsale":"Продажа","nav.forrent":"Аренда","nav.whyus":"Почему мы","nav.about":"О нас","nav.reviews":"Отзывы","nav.contact":"Контакты",
+    "hero.title":"Найдите свою идеальную недвижимость","hero.subtitle":"Откройте для себя лучшие места для жизни или инвестиций.",
+    "hero.rent":"Аренда","hero.sale":"Продажа","hero.all":"Все",
+    "hero.keyword":"Ключевое слово","hero.proptype":"Тип недвижимости","hero.location":"Расположение","hero.search":"Искать",
+    "stats.sold":"Продано объектов","stats.clients":"Довольных клиентов","stats.years":"Лет в Ереване","stats.rating":"Средний рейтинг",
+    "forsale.title":"Дома на продажу","forsale.sub":"Объекты, доступные для покупки прямо сейчас. Цены указаны ориентировочно — всегда обсуждаются по звонку.",
+    "forsale.item1":"Семейный дом с садом","forsale.item2":"Роскошный дом","forsale.item3":"Просторный семейный дом","forsale.viewall":"Смотреть все дома на продажу",
+    "forrent.title":"Аренда","forrent.sub":"Квартиры и номера в хостелах — посуточно или помесячно. Переключите ниже, чтобы увидеть цены.",
+    "forrent.daily":"Посуточно","forrent.monthly":"Помесячно",
+    "forrent.item1":"Городская студия","forrent.item2":"Апартаменты в центре","forrent.item3":"Уютный номер в хостеле",
+    "forrent.night":"/ ночь","forrent.month":"/ месяц","forrent.viewall":"Смотреть все варианты аренды",
+    "whyus.title":"Почему стоит работать с нами","whyus.sub":"Несколько причин, почему клиенты возвращаются и рекомендуют нас друзьям.",
+    "whyus.f1t":"Проверенные объявления","whyus.f1d":"Каждый объект проверяется лично, прежде чем попасть на сайт.",
+    "whyus.f2t":"Честные цены","whyus.f2d":"Знание местного рынка — никаких сюрпризов с ценой.",
+    "whyus.f3t":"Быстрый ответ","whyus.f3d":"Ответ в тот же день и гибкое время просмотров.",
+    "whyus.f4t":"Полная поддержка","whyus.f4d":"От первого просмотра до подписания договора — сопровождаем на каждом этапе.",
+    "how.title":"Как это работает","how.sub":"Три простых шага от просмотра до заселения.",
+    "how.s1t":"Поиск и подбор","how.s1d":"Отфильтруйте по бюджету, району и типу недвижимости, чтобы составить список.",
+    "how.s2t":"Просмотр и сравнение","how.s2d":"Мы организуем просмотры в удобное для вас время и разбираем каждый вариант вместе с вами.",
+    "how.s3t":"Закрыть сделку","how.s3d":"Документы, переговоры и передача — всё берём на себя.",
+    "agent.label":"Знакомьтесь с вашим агентом","agent.bio":"Уже более 10 лет помогаю людям находить подходящее жильё в Ереване. Снимаете ли вы первую квартиру или инвестируете в следующий объект — я проведу вас через каждый шаг, без давления, только честные советы.","agent.city":"Ереван, Армения",
+    "testi.title":"Что говорят клиенты",
+    "testi.q1":"«Нашли для нас идеальную квартиру меньше чем за две недели. Всё было понятно и без стресса».","testi.r1":"Арендатор",
+    "testi.q2":"«Продали наш дом выше запрашиваемой цены. Профессионально от первого звонка до закрытия сделки».","testi.r2":"Продавец",
+    "testi.q3":"«Как покупатель впервые, у меня было много вопросов. На каждый терпеливо ответили».","testi.r3":"Покупатель",
+    "cta.title":"Нужна помощь в поиске недвижимости?","cta.sub":"Я здесь, чтобы помочь вам найти идеальное место.","cta.button":"Связаться со мной",
+    "footer.tagline":"Помогаем людям находить подходящее жильё в Ереване — аренда, продажа и всё, что между ними.",
+    "footer.quicklinks":"Быстрые ссылки","footer.hours":"Часы работы",
+    "footer.h1":"Пн – Пт: 9:00 – 18:00","footer.h2":"Суббота: 10:00 – 15:00","footer.h3":"Воскресенье: Выходной",
+    "footer.rights":"Все права защищены.","footer.builtwith":"Создано с использованием HTML, CSS и Bootstrap"
+  }
+};
+
+function setLanguage(lang){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if(translations[lang] && translations[lang][key] !== undefined){
+      el.textContent = translations[lang][key];
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var key = el.getAttribute('data-i18n-placeholder');
+    if(translations[lang] && translations[lang][key] !== undefined){
+      el.setAttribute('placeholder', translations[lang][key]);
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.documentElement.setAttribute('lang', lang);
+  try{ localStorage.setItem('site-lang', lang); }catch(e){}
+}
+
+document.querySelectorAll('.lang-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){ setLanguage(btn.dataset.lang); });
+});
+
+var savedLang = 'en';
+try{ savedLang = localStorage.getItem('site-lang') || 'en'; }catch(e){}
+setLanguage(savedLang);
+</script>
+</body>
+</html>
